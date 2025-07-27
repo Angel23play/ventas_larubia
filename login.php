@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump(password_verify($password, $user['password']));
 
 
-   if ($user && $password === $user['password']) {
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $username;
         header("Location: home.php");
         exit();
@@ -26,12 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="assets/estilos.css" />
 </head>
+
 <body>
     <div class="login-container">
         <h2>Iniciar sesión</h2>
@@ -47,4 +49,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
+
 </html>
